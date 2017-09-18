@@ -36,4 +36,12 @@ class ShoppingCartSpec extends FlatSpec with Matchers {
     the[IllegalStateException] thrownBy
       ShoppingCart.checkout(List("grapes")) should have message "Illegal item added"
   }
+
+  it should "have a value of 0 pence when an empty list is checked out" in {
+    ShoppingCart.checkout(List()) shouldEqual 0.0
+  }
+
+  it should "have a value of 0 pence when a nil is checked out" in {
+    ShoppingCart.checkout(Nil) shouldEqual 0.0
+  }
 }
