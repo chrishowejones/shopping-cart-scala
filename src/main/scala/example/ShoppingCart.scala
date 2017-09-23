@@ -1,15 +1,30 @@
 package example
 
-object ShoppingCart {
+class ShoppingCart(priceMatrix: Map[String, () => Double]) {
 
   def checkout(items: List[String]): Double = {
+    def price(total: Double, item: String) = {
+      priceMatrix.get(item) match {
+        case priceCalc: Some[() => Double] => total + priceCalc.get.apply()
+        case None => throw new IllegalStateException("Illegal item added")
+      }
+    }
+
     items.filter(_ != null)
+      .map(_.toLowerCase)
       .foldLeft(0.0)((total, item) =>
-        item.toLowerCase match {
-          case "apple" => total + 0.60
-          case "orange" => total + 0.25
-          case "plum" => total + 0.75
-          case _ => throw new IllegalStateException("Illegal item added")
-        })
+        price(total, item))
   }
+
+}
+
+object ShoppingCart {
+
+  val defaultPriceMatrix =
+    Map(("apple", () => 0.60),
+      ("orange", () => 0.25),
+      ("plum", () => 0.75))
+
+  def checkout(items: List[String]): Double = new ShoppingCart(defaultPriceMatrix).checkout(items)
+
 }
