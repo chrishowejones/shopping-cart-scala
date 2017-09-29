@@ -75,17 +75,27 @@ object Color extends Enumeration {
 }
 
 
-object TryStuff {val x, y, z = 1
+object TryStuff {
+
+  val x, y, z = 1
+
   val a, b, c = 2
 
   Traversable(1, 2, 3)
-    Iterable("x", "y", "z")
+
+  Iterable("x", "y", "z")
+
   Map("x" -> 24, "y" -> 25, "z" -> 26)
-    Set(Color.Red, Color.Green, Color.Blue)
+
+  Set(Color.Red, Color.Green, Color.Blue)
+
   SortedSet("hello", "world")
-    Buffer(x, y, z)
+
+  Buffer(x, y, z)
+
   IndexedSeq(1.0, 2.0)
-    LinearSeq(a, b, c)
+
+  LinearSeq(a, b, c)
 
   List(1, 2, 3) map (_ + 1)
 
@@ -100,4 +110,5 @@ object TryStuff {val x, y, z = 1
   1 to 11 sum
 
   1 to 11 product
+
 }
