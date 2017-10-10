@@ -1,7 +1,7 @@
-# Example Scala Project
+# Simple Shopping Cart
 
-This is a placeholder sample project to allow me to play with Scala
-and try stuff out.
+This is a simplification of a shopping cart in Scala as a toy project
+to demonstrate solving a very simple problem.
 
 # License
 
